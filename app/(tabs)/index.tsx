@@ -1,98 +1,96 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
-
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
+import { useState } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import ActionButton from '../../components/ActionButton';
+import ProfileCard from '../../components/ProfileCard';
+import { PROFILES } from '../../constants/mockData';
 
 export default function HomeScreen() {
-  return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
+  const [profiles, setProfiles] = useState(PROFILES);
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+  const handleAction = () => {
+    setProfiles((prevProfiles) => prevProfiles.slice(1));
+  };
+
+  const currentProfile = profiles[0];
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <View style={styles.cardContainer}>
+        {currentProfile ? (
+          <ProfileCard profile={currentProfile} />
+        ) : (
+          <View style={styles.noMoreCards}>
+            <Text style={styles.noMoreCardsText}>Não há mais perfis por perto!</Text>
+            <Text>Volte mais tarde.</Text>
+          </View>
+        )}
+      </View>
+
+      {currentProfile && (
+        <View style={styles.buttonsContainer}>
+          <ActionButton
+            onPress={handleAction}
+            iconName="close"
+            color="#F43F5E"
+            style={styles.button}
+          />
+          <ActionButton
+            onPress={handleAction}
+            iconName="star"
+            color="#3B82F6"
+            size={24}
+            style={styles.buttonSmall}
+          />
+          <ActionButton
+            onPress={handleAction}
+            iconName="heart"
+            color="#10B981"
+            style={styles.button}
+          />
+        </View>
+      )}
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
+  container: {
+    flex: 1,
+    backgroundColor: '#F9FAFB',
     alignItems: 'center',
-    gap: 8,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  cardContainer: {
+    flex: 1,
+    width: '90%',
+    marginVertical: 20,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  buttonsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    width: '100%',
+    paddingBottom: 20,
+  },
+  button: {
+    width: 70,
+    height: 70,
+    borderRadius: 35,
+  },
+  buttonSmall: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+  },
+  noMoreCards: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#E5E7EB',
+    borderRadius: 20,
+  },
+  noMoreCardsText: {
+    fontSize: 22,
+    fontWeight: 'bold',
   },
 });
