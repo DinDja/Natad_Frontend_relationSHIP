@@ -1,33 +1,68 @@
-import { Ionicons } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
-import { ComponentProps } from 'react';
 
 export default function TabsLayout() {
   return (
     <Tabs
-      screenOptions={({ route }) => ({
-        headerShown: false,
-        tabBarIcon: ({ focused, color, size }) => {
-          let iconName: ComponentProps<typeof Ionicons>['name'] = 'help-circle';
-
-          if (route.name === 'index') {
-            iconName = focused ? 'flame' : 'flame-outline';
-          } else if (route.name === 'matches') {
-            iconName = focused ? 'chatbubbles' : 'chatbubbles-outline';
-          } else if (route.name === 'profile') {
-            iconName = focused ? 'person-circle' : 'person-circle-outline';
-          }
-
-          return <Ionicons name={iconName} size={size} color={color} />;
+      screenOptions={{
+        tabBarActiveTintColor: '#FF5864',
+        tabBarInactiveTintColor: '#BDBDBD',
+        tabBarStyle: {
+          backgroundColor: '#FFFFFF',
+          borderTopWidth: 0,
+          elevation: 5,
+          shadowOpacity: 0.1,
+          height: 60,
+          paddingBottom: 5,
         },
-        tabBarActiveTintColor: '#EC4899',
-        tabBarInactiveTintColor: 'gray',
-        tabBarShowLabel: false,
-      })}
+        headerShown: false,
+      }}
     >
-      <Tabs.Screen name="index" />
-      <Tabs.Screen name="matches" />
-      <Tabs.Screen name="profile" />
+      <Tabs.Screen
+        name="index"
+        options={{
+          tabBarLabel: 'Descobrir',
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome5 name="fire" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="stats" 
+        options={{
+          tabBarLabel: 'Ranking',
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome5 name="balance-scale" size={size} color={color} />
+          ),
+        }}
+      />
+       <Tabs.Screen
+        name="settings" 
+        options={{
+          tabBarLabel: 'Ajustes',
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome5 name="cog" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="matches"
+        options={{
+          tabBarLabel: 'Matches',
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome5 name="heart" size={size} color={color} solid />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="profile"
+        options={{
+          tabBarLabel: 'Perfil',
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome5 name="user" size={size} color={color} solid />
+          ),
+        }}
+      />
     </Tabs>
   );
 }

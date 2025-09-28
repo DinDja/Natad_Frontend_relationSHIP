@@ -1,40 +1,24 @@
-import { Ionicons } from '@expo/vector-icons';
-import { Pressable, StyleSheet } from 'react-native';
+import { FontAwesome5 } from '@expo/vector-icons';
+import React from 'react';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 
-const ActionButton = ({ onPress, color, iconName, size = 30, style }) => {
+export default function ActionButton({ onPress, iconName, color, size = 32, style }) {
   return (
-    <Pressable
-      onPress={onPress}
-      style={({ pressed }) => [
-        styles.button,
-        style,
-        { opacity: pressed ? 0.7 : 1 },
-      ]}
-    >
-      <Ionicons name={iconName} size={size} color={color} />
-    </Pressable>
+    <TouchableOpacity style={[styles.button, { backgroundColor: '#FFF' }, style]} onPress={onPress}>
+      <FontAwesome5 name={iconName} size={size} color={color} />
+    </TouchableOpacity>
   );
-};
+}
 
 const styles = StyleSheet.create({
   button: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white',
-    // iOS Shadow
+    elevation: 5,
     shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.22,
-    shadowRadius: 2.22,
-    // Android Shadow
-    elevation: 3,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
   },
 });
 
-export default ActionButton;

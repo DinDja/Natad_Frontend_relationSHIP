@@ -3,7 +3,6 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Image, Modal, Pressable, StyleSheet, Text, View } from 'react-native';
 
 const MatchModal = ({ visible, onClose, myProfile, matchedProfile }) => {
-  // Para evitar erros, não renderiza nada se os perfis não forem fornecidos
   if (!myProfile || !matchedProfile) {
     return null;
   }
@@ -32,7 +31,7 @@ const MatchModal = ({ visible, onClose, myProfile, matchedProfile }) => {
 
           <Pressable
             style={[styles.button, styles.buttonSendMessage]}
-            onPress={onClose} // No futuro, isso abrirá o chat
+            onPress={onClose} 
           >
             <Text style={styles.textStyle}>Enviar Mensagem</Text>
           </Pressable>

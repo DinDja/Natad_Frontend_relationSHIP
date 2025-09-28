@@ -5,10 +5,10 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 export default function LoginScreen() {
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>MatchMaker</Text>
+      <Text style={styles.title}>MeteDança</Text>
       <Link href="/(tabs)" asChild>
         <Pressable style={styles.button}>
-            <Text style={styles.buttonText}>Entrar no App (Simulação)</Text>
+            <Text style={styles.buttonText}>Entrar no App (Alá pequetito)</Text>
         </Pressable>
       </Link>
     </SafeAreaView>
