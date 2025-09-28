@@ -1,50 +1,72 @@
-# Welcome to your Expo app 👋
+ App de Relacionamento Universitário
+ um aplicativo de relacionamento focado em conectar estudantes das principais universidades de Salvador, Bahia. O objetivo é criar uma comunidade onde as conexões são facilitadas pelo contexto acadêmico compartilhado.
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+✨ Funcionalidades Principais
+O aplicativo conta com um conjunto robusto de funcionalidades para criar uma experiência de usuário completa e engajadora:
 
-## Get started
+Descoberta Inteligente: Um sistema de cards, similar ao Tinder, onde os usuários podem deslizar para a direita (interesse) ou para a esquerda (dispensar).
 
-1. Install dependencies
+Perfis Detalhados: Ao tocar em um card, o usuário pode ver um perfil completo, com múltiplas fotos, biografia, curso e universidade.
 
-   ```bash
-   npm install
-   ```
+Matches & Chat: Quando dois usuários demonstram interesse mútuo, um "match" é formado, abrindo uma tela de chat para a conversa.
 
-2. Start the app
+Ranking de Universidades: Uma tela de estatísticas que mostra um ranking de compatibilidade entre as universidades, baseado nos "likes" dos usuários.
 
-   ```bash
-   npx expo start
-   ```
+Eventos de Integração: Cards de eventos que promovem festas e encontros entre as faculdades com maior índice de match, fortalecendo a comunidade.
 
-In the output, you'll find options to open the app in a
+Edição de Perfil Completa: O usuário pode personalizar seu perfil, adicionando até 6 fotos (via galeria ou câmera) e editando todas as suas informações.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+Filtros de Descoberta: Uma tela de configurações permite ao usuário refinar quem ele deseja encontrar, filtrando por gênero, universidade, curso e mais.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+🚀 Tecnologias Utilizadas
+Este projeto foi construído com as tecnologias mais modernas do ecossistema React Native:
 
-## Get a fresh project
+React Native: Framework para desenvolvimento de aplicativos móveis nativos.
 
-When you're ready, run:
+Expo: Plataforma e conjunto de ferramentas para agilizar o desenvolvimento e a publicação.
 
-```bash
-npm run reset-project
-```
+Expo Router: Sistema de roteamento baseado em arquivos para uma navegação declarativa e intuitiva.
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+TypeScript: Para um código mais robusto, seguro e de fácil manutenção.
 
-## Learn more
+React Context API: Para gerenciamento de estado global de forma simples e eficiente.
 
-To learn more about developing your project with Expo, look at the following resources:
+Firebase (Backend): Planejado para autenticação, banco de dados (Firestore), armazenamento de imagens (Storage) e funções de backend (Cloud Functions).
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+🚀 Como Começar
+Para executar este projeto em seu ambiente de desenvolvimento, siga os passos abaixo:
 
-## Join the community
+Clone o Repositório
 
-Join our community of developers creating universal apps.
+git clone [https://github.com/seu-usuario/natad-app.git](https://github.com/seu-usuario/natad-app.git)
+cd natad-app
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Instale as Dependências
+O projeto utiliza npm.
+
+npm install
+
+Inicie o Servidor de Desenvolvimento
+
+npx expo start
+
+Execute no seu Dispositivo
+
+Baixe o aplicativo Expo Go na App Store (iOS) ou Google Play (Android).
+
+Escaneie o QR Code que aparecerá no seu terminal.
+
+📁 Estrutura do Projeto
+A organização dos arquivos segue uma arquitetura limpa e escalável:
+
+/app: Contém todas as telas e a lógica de navegação do aplicativo, utilizando o roteamento do Expo.
+
+/assets: Armazena fontes, imagens e outros arquivos estáticos.
+
+/components: Reúne os componentes React reutilizáveis (cards, botões, etc.).
+
+/constants: Define dados constantes, como os perfis de exemplo (mockData.js).
+
+/contexts: Gerencia o estado global da aplicação, como as informações do perfil do usuário.
+
+Feito com ☕ e código em Salvador, Bahia.
