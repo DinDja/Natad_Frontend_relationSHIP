@@ -29,7 +29,7 @@ export default function HomeScreen() {
       <View style={styles.header}>
         <View style={{ width: 24 }} />
         <Text style={styles.headerTitle}>NATAD</Text>
-        <TouchableOpacity onPress={() => router.push('./settings')}>
+        <TouchableOpacity onPress={() => router.push('../settings')}>
           <FontAwesome5 name="sliders-h" size={24} color="#BDBDBD" />
         </TouchableOpacity>
       </View>
